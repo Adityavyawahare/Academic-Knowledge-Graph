@@ -5,103 +5,543 @@
         "date_published": "25 Oct 2022",
         "abstract": "Large Language Models (LLMs) have achieved excellent performances in various tasks. However, fine-tuning an LLM requires extensive supervision. Human, on the other hand, may improve their reasoning abilities by self-thinking without external inputs. In this work, we demonstrate that an LLM is also capable of self-improving with only unlabeled datasets. We use a pre-trained LLM to generate 'high-confidence' rationale-augmented answers for unlabeled questions using Chain-of-Thought prompting and self-consistency, and fine-tune the LLM using those self-generated solutions as target outputs. We show that our approach improves the general reasoning ability of a 540B-parameter LLM (74.4%->82.1% on GSM8K, 78.2%->83.0% on DROP, 90.0%->94.4% on OpenBookQA, and 63.4%->67.9% on ANLI-A3) and achieves state-of-the-art-level performance, without any ground truth label. We conduct ablation studies and show that fine-tuning on reasoning is critical for self-improvement.",
         "conclusion": "We demonstrated that a Large Language Model (LLM) is capable of improving its performance on reasoning datasets by training on its own generated labels, given input questions only. Experiments using an LLM with 540 billion parameters show that our approach improves the accuracy scores on the six datasets by 1.1% to 7.7%, achieving new state-of-the-art results on ARC, OpenBookQA, and ANLI, without training on ground truth labels. Furthermore, we show that it is possible for the LLM to self-improve even on its own generated questions and few-shot Chain-of-Thought prompts. As part of our future work, we plan to combine large-scale generated data from our approach and existing supervised data, to further improve the performance of LLMs.",
-        "authors": ["Jiaxin Huang", "Shixiang Shane Gu", "Le Hou", "Yuexin Wu", "Xuezhi Wang", "Hongkun Yu", "Jiawei Han"],
+        "authors": [
+          "Jiaxin Huang", "Shixiang Shane Gu", "Le Hou", 
+          "Yuexin Wu", "Xuezhi Wang", "Hongkun Yu", 
+          "Jiawei Han"
+        ],
         "number_of_citations": 416,
         "datasets": ["GSM8K", "DROP", "OpenBookQA", "ANLI-A3"],
         "domains": ["Computer Science", "Computation and Language"],
-        "keywords": ["Large Language Models", "self-improvement", "Chain-of-Thought prompting", "self-consistency", "fine-tuning", "reasoning ability"],
+        "keywords": [
+          "Large Language Models", "self-improvement", 
+          "Chain-of-Thought prompting", "self-consistency", 
+          "fine-tuning", "reasoning ability"
+        ],
         "conference": "EMNLP 2023",
-        "github_repo": null,
-        "url": "https://arxiv.org/pdf/2210.11610"
+        "github_repo": "https://github.com/google-research/google-research/tree/master/ul2",
+        "url": "https://arxiv.org/pdf/2210.11610",
+        "citations": [
+          {
+            "id": "2202.12040",
+            "title": "Self-Training: A Survey",
+            "url": "https://arxiv.org/pdf/2202.12040"
+          },
+          {
+            "id": "2106.01226",
+            "title": "Semi-Supervised Semantic Segmentation with Cross Pseudo Supervision",
+            "url": "https://arxiv.org/pdf/2106.01226"
+          }
+        ]
     },
     {
-        "id": "2310.16040",
-        "title": "Instruct and Extract: Instruction Tuning for On-Demand Information Extraction",
-        "date_published": "24 Oct 2023",
-        "abstract": "Large language models with instruction-following capabilities open the door to a wider group of users. However, when it comes to information extraction - a classic task in natural language processing - most task-specific systems cannot align well with long-tail ad hoc extraction use cases for non-expert users. To address this, we propose a novel paradigm, termed On-Demand Information Extraction, to fulfill the personalized demands of real-world users. Our task aims to follow the instructions to extract the desired content from the associated text and present it in a structured tabular format. The table headers can either be user-specified or inferred contextually by the model. To facilitate research in this emerging area, we present a benchmark named InstructIE, inclusive of both automatically generated training data, as well as the human-annotated test set. Building on InstructIE, we further develop an On-Demand Information Extractor, ODIE. Comprehensive evaluations on our benchmark reveal that ODIE substantially outperforms the existing open-source models of similar size. Our code and dataset are released on https://github.com/yzjiao/On-Demand-IE.",
-        "conclusion": "As part of our future work, we plan to combine large-scale generated data from our approach and existing supervised data, to further improve the performance of LLMs.",
-        "authors": ["Yizhu Jiao", "Ming Zhong", "Sha Li", "Ruining Zhao", "Siru Ouyang", "Heng Ji", "Jiawei Han"],
-        "number_of_citations": 21,
-        "datasets": ["InstructIE"],
-        "domains": ["Computer Science", "Natural Language Processing", "Information Extraction"],
-        "keywords": ["On-Demand Information Extraction", "Instruction Tuning", "Large Language Models"],
-        "conference": "EMNLP 2023",
-        "github_repo": "https://github.com/yzjiao/On-Demand-IE",
-        "url": "https://arxiv.org/pdf/2310.16040"
+    "id": "2202.12040",
+    "title": "Self-Training: A Survey",
+    "date_published": "27 May 2024",
+    "abstract": "Semi-supervised algorithms aim to learn prediction functions from a small set of labeled observations and a large set of unlabeled observations. Because this framework is relevant in many applications, they have received a lot of interest in both academia and industry. Among the existing techniques, self-training methods have undoubtedly attracted greater attention in recent years. These models are designed to find the decision boundary on low density regions without making additional assumptions about the data distribution, and use the unsigned output score of a learned classifier, or its margin, as an indicator of confidence. The working principle of self-training algorithms is to learn a classifier iteratively by assigning pseudo-labels to the set of unlabeled training samples with a margin greater than a certain threshold. The pseudo-labeled examples are then used to enrich the labeled training data and to train a new classifier in conjunction with the labeled training set. In this paper, we present self-training methods for binary and multi-class classification; as well as their variants and two related approaches, namely consistency-based approaches and transductive learning. We examine the impact of significant self-training features on various methods, using different general and image classification benchmarks, and we discuss our ideas for future research in self-training.",
+    "conclusion": "Self-training is a robust semi-supervised technique, with future potential for handling noisy labels, domain shifts, and broader applications.",
+    "authors": [
+        "Massih-Reza Amini", "Vasilii Feofanov", "Loïc Pauletto", 
+        "Liès Hadjadj", "Émilie Devijver", "Yury Maximov"
+    ],
+    "number_of_citations": 130,
+    "datasets": [],
+    "domains": ["Semi-Supervised Learning", "Machine Learning"],
+    "keywords": [
+        "Self-Training", "Semi-Supervised Learning", 
+        "Pseudo-Labeling", "Reinforced Self-Training"
+    ],
+    "conference": "None (preprint)",
+    "github_repo": null,
+    "url": "https://arxiv.org/pdf/2202.12040",
+    "citations": []
     },
     {
-        "id": "2402.01030",
-        "title": "Executable Code Actions Elicit Better LLM Agents",
-        "date_published": "1 Feb 2024",
-        "abstract": "Large Language Model (LLM) agents, capable of performing a broad range of actions, such as invoking tools and controlling robots, show great potential in tackling real-world challenges. LLM agents are typically prompted to produce actions by generating JSON or text in a pre-defined format, which is usually limited by constrained action space (e.g., the scope of pre-defined tools) and restricted flexibility (e.g., inability to compose multiple tools). This work proposes to use executable Python code to consolidate LLM agents' actions into a unified action space (CodeAct). Integrated with a Python interpreter, CodeAct can execute code actions and dynamically revise prior actions or emit new actions upon new observations through multi-turn interactions. Our extensive analysis of 17 LLMs on APIBank and a newly curated benchmark shows that CodeAct outperforms widely used alternatives (up to 20% higher success rate). The encouraging performance of CodeAct motivates us to build an open-source LLM agent that interacts with environments by executing interpretable code and collaborates with users using natural language. To this end, we collect an instruction-tuning dataset CodeActInstruct that consists of 7k multi-turn interactions using CodeAct. We show that it can be used with existing data to improve models in agent-oriented tasks without compromising their general capability. CodeActAgent, finetuned from Llama2 and Mistral, is integrated with Python interpreter and uniquely tailored to perform sophisticated tasks (e.g., model training) using existing libraries and autonomously self-debug.",
-        "conclusion": "As part of our future work, we plan to combine large-scale generated data from our approach and existing supervised data, to further improve the performance of LLMs.",
-        "authors": ["Xingyao Wang", "Yangyi Chen", "Lifan Yuan", "Yizhe Zhang", "Yunzhu Li", "Hao Peng", "Heng Ji"],
-        "number_of_citations": 51,
-        "datasets": ["APIBank", "CodeActInstruct"],
-        "domains": ["Computer Science", "Natural Language Processing", "Machine Learning", "Artificial Intelligence"],
-        "keywords": ["Large Language Models", "Code Generation", "Agents", "Instruction Tuning"],
-        "conference": "ICML 2024",
-        "github_repo": "https://github.com/xingyaoww/code-act",
-        "url": "https://arxiv.org/pdf/2402.01030"
+    "id": "2106.01226",
+    "title": "Semi-Supervised Semantic Segmentation with Cross Pseudo Supervision",
+    "date_published": "4 Jun 2021",
+    "abstract": "In this paper, we study the semi-supervised semantic segmentation problem via exploring both labeled data and extra unlabeled data. We propose a novel consistency regularization approach, called cross pseudo supervision (CPS). Our approach imposes the consistency on two segmentation networks perturbed with different initialization for the same input image. The pseudo one-hot label map, output from one perturbed segmentation network, is used to supervise the other segmentation network with the standard cross-entropy loss, and vice versa. The CPS consistency has two roles: encourage high similarity between the predictions of two perturbed networks for the same input image, and expand training data by using the unlabeled data with pseudo labels. Experiment results show that our approach achieves the state-of-the-art semi-supervised segmentation performance on Cityscapes and PASCAL VOC 2012.",
+    "conclusion": "We present a simple but effective semi-supervised segmentation approach, cross pseudo supervision. Our approach imposes the consistency between two networks with the same structure and different initialization, by using the one-hot pseudo segmentation map obtained from one network to supervise the other network. On the other hand, the unlabeled data with pseudo segmentation map, which is more accurate in the later training stage, serves as expanding the training data to improve the performance.",
+    "authors": ["Xiaokang Chen", "Yuhui Yuan", "Gang Zeng", "Jingdong Wang"],
+    "number_of_citations": 951,
+    "datasets": ["Cityscapes", "PASCAL"],
+    "domains": ["Computer Vision and Pattern Recognition"],
+    "keywords": [
+        "Semi-supervised semantic segmentation", 
+        "Cross pseudo supervision", "Consistency regularization", 
+        "Network perturbations"
+    ],
+    "conference": "2021 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)",
+    "github_repo": "https://github.com/charlesCXK/TorchSemiSeg",
+    "url": "https://arxiv.org/pdf/2106.01226",
+    "citations": []
     },
     {
-        "id": "2310.00898",
-        "title": "Enabling Language Models to Implicitly Learn Self-Improvement",
-        "date_published": "2024",
-        "abstract": "Large Language Models (LLMs) have demonstrated remarkable capabilities in open-ended text generation tasks. However, the inherent open-ended nature of these tasks implies that there is always room for improvement in the quality of model responses. To address this challenge, various approaches have been proposed to enhance the performance of LLMs. There has been a growing focus on enabling LLMs to self-improve their response quality, thereby reducing the reliance on extensive human annotation efforts for collecting diverse and high-quality training data. Recently, prompting-based methods have been widely explored among self-improvement methods owing to their effectiveness, efficiency, and convenience. However, those methods usually require explicitly and thoroughly written rubrics as inputs to LLMs. It is expensive and challenging to manually derive and provide all necessary rubrics with a real-world complex goal for improvement (e.g., being more helpful and less harmful). To this end, we propose an ImPlicit Self-ImprovemenT (PIT) framework that implicitly learns the improvement goal from human preference data. PIT only requires preference data that are used to train reward models without extra human efforts. Specifically, we reformulate the training objective of reinforcement learning from human feedback (RLHF) -- instead of maximizing response quality for a given input, we maximize the quality gap of the response conditioned on a reference response. In this way, PIT is implicitly trained with the improvement goal of better aligning with human preferences. Experiments on two real-world datasets and one synthetic dataset show that our method significantly outperforms prompting-based methods.",
-        "conclusion": null,
-        "authors": ["Ziqi Wang", "Le Hou", "Tianjian Lu", "Yuexin Wu", "Yunxuan Li", "Hongkun Yu", "Heng Ji"],
-        "number_of_citations": 2,
-        "datasets": ["Anthropic/HH-RLHF", "OpenAI/Summary", "synthetic data"],
-        "domains": ["Computer Science", "Natural Language Processing", "Machine Learning"],
-        "keywords": ["Large Language Models", "Reinforcement Learning", "Human Feedback", "Self-Improvement"],
-        "conference": "ICLR 2024",
-        "github_repo": null,
-        "url": "https://arxiv.org/pdf/2310.00898"
+    "id": "2310.16040",
+    "title": "Instruct and Extract: Instruction Tuning for On-Demand Information Extraction",
+    "date_published": "24 Oct 2023",
+    "abstract": "Large language models with instruction-following capabilities open the door to a wider group of users. However, when it comes to information extraction - a classic task in natural language processing - most task-specific systems cannot align well with long-tail ad hoc extraction use cases for non-expert users. To address this, we propose a novel paradigm, termed On-Demand Information Extraction, to fulfill the personalized demands of real-world users. Our task aims to follow the instructions to extract the desired content from the associated text and present it in a structured tabular format. The table headers can either be user-specified or inferred contextually by the model. To facilitate research in this emerging area, we present a benchmark named InstructIE, inclusive of both automatically generated training data, as well as the human-annotated test set. Building on InstructIE, we further develop an On-Demand Information Extractor, ODIE. Comprehensive evaluations on our benchmark reveal that ODIE substantially outperforms the existing open-source models of similar size. Our code and dataset are released on https://github.com/yzjiao/On-Demand-IE.",
+    "conclusion": "As part of our future work, we plan to combine large-scale generated data from our approach and existing supervised data, to further improve the performance of LLMs.",
+    "authors": ["Yizhu Jiao", "Ming Zhong", "Sha Li", "Ruining Zhao", "Siru Ouyang", "Heng Ji", "Jiawei Han"],
+    "number_of_citations": 21,
+    "datasets": ["InstructIE"],
+    "domains": ["Computer Science", "Natural Language Processing", "Information Extraction"],
+    "keywords": ["On-Demand Information Extraction", "Instruction Tuning", "Large Language Models"],
+    "conference": "EMNLP 2023",
+    "github_repo": "https://github.com/yzjiao/On-Demand-IE",
+    "url": "https://arxiv.org/pdf/2310.16040",
+    "citations": [
+        {
+        "id": "2204.05862",
+        "title": "Training a Helpful and Harmless Assistant with Reinforcement Learning from Human Feedback",
+        "url": "https://arxiv.org/pdf/2204.05862"
+        },
+        {
+        "id": "2005.14165",
+        "title": "Language Models are Few-Shot Learners",
+        "url": "https://arxiv.org/pdf/2005.14165"
+        }
+    ]
     },
     {
-        "id": "2402.13364",
-        "title": "A Simple but Effective Approach to Improve Structured Language Model Output for Information Extraction",
-        "date_published": "20 Feb 2024",
-        "abstract": "Large language models (LLMs) have demonstrated impressive abilities in generating unstructured natural language according to instructions. However, their performance can be inconsistent when tasked with producing text that adheres to specific structured formats, which is crucial in applications like named entity recognition (NER) or relation extraction (RE). To address this issue, this paper introduces an efficient method, G&O, to enhance their structured text generation capabilities. It breaks the generation into a two-step pipeline: initially, LLMs generate answers in natural language as intermediate responses. Subsequently, LLMs are asked to organize the output into the desired structure, using the intermediate responses as context. G&O effectively separates the generation of content from the structuring process, reducing the pressure of completing two orthogonal tasks simultaneously. Tested on zero-shot NER and RE, the results indicate a significant improvement in LLM performance with minimal additional efforts.",
-        "conclusion": "The G&O method effectively improves the performance of language models in generating structured outputs, demonstrating its utility for various structured text generation tasks.",
-        "authors": ["Yinghao Li", "Rampi Ramprasad", "Chao Zhang"],
-        "number_of_citations": 5,
-        "datasets": ["CoNLL 2003", "NCBI Disease", "BC5CDR", "PolyIE", "CoNLL 2004", "NYT"],
-        "domains": ["Computer Science", "Natural Language Processing", "Information Extraction"],
-        "keywords": ["Large Language Models", "Information Extraction", "Named Entity Recognition", "Relation Extraction", "Structured Text Generation"],
-        "conference": "Preprint",
-        "github_repo": null,
-        "url": "https://arxiv.org/pdf/2402.13364"
+    "id": "2204.05862",
+    "title": "Training a Helpful and Harmless Assistant with Reinforcement Learning from Human Feedback",
+    "date_published": "12 Apr 2022",
+    "abstract": "We apply preference modeling and reinforcement learning from human feedback (RLHF) to finetune language models to act as helpful and harmless assistants. We find this alignment training improves performance on almost all NLP evaluations, and is fully compatible with training for specialized skills such as python coding and summarization. We explore an iterated online mode of training, where preference models and RL policies are updated on a weekly cadence with fresh human feedback data, efficiently improving our datasets and models. Finally, we investigate the robustness of RLHF training, and identify a roughly linear relation between the RL reward and the square root of the KL divergence between the policy and its initialization. Alongside our main results, we perform peripheral analyses on calibration, competing objectives, and the use of OOD detection, compare our models with human writers, and provide samples from our models using prompts appearing in recent related work.",
+    "conclusion": "The paper does not provide a specific conclusion section in the available information.",
+    "authors": [
+        "Yuntao Bai", "Andy Jones", "Kamal Ndousse", "Amanda Askell", "Anna Chen", 
+        "Nova Dassarma", "Dawn Drain", "Stanislav Fort", "Deep Ganguli", 
+        "Tom Henighan", "Nicholas Joseph", "Saurav Kadavath", "John Kernion", 
+        "Tom Conerly", "Sheer El-Showk", "Nelson Elhage", "Zac Hatfield-Dodds", 
+        "Danny Hernandez", "Tristan Hume", "Scott Johnston", "Shauna Kravec", 
+        "Liane Lovitt", "Neel Nanda", "Catherine Olsson", "Dario Amodei", 
+        "Tom B. Brown", "Jack Clark", "Sam McCandlish", "Christopher Olah", 
+        "Benjamin Mann", "Jared Kaplan"
+    ],
+    "number_of_citations": 1452,
+    "datasets": [],
+    "domains": ["Natural Language Processing", "AI Safety"],
+    "keywords": ["RLHF", "Preference Modeling", "Alignment", "NLP", "AI Safety", "Human Feedback"],
+    "conference": "arXiv preprint",
+    "github_repo": "Anthropic GitHub Repo",
+    "url": "https://arxiv.org/pdf/2204.05862",
+    "citations": []
     },
     {
-        "id": "2307.01448",
-        "title": "ReactIE: Enhancing Chemical Reaction Extraction with Weak Supervision",
-        "date_published": "4 Jul 2023",
-        "abstract": "Structured chemical reaction information plays a vital role for chemists engaged in laboratory work and advanced endeavors such as computer-aided drug design. Despite the importance of extracting structured reactions from scientific literature, data annotation for this purpose is cost-prohibitive due to the significant labor required from domain experts. Consequently, the scarcity of sufficient training data poses an obstacle to the progress of related models in this domain. In this paper, we propose ReactIE, which combines two weakly supervised approaches for pre-training. Our method utilizes frequent patterns within the text as linguistic cues to identify specific characteristics of chemical reactions. Additionally, we adopt synthetic data from patent records as distant supervision to incorporate domain knowledge into the model. Experiments demonstrate that ReactIE achieves substantial improvements and outperforms all existing baselines.",
-        "conclusion": "In this paper, we present REACTIE, an automatic framework for extracting chemical reactions from the scientific literature. Our approach incorpo- rates linguistic and chemical knowledge into the pre-training. Experiments show that REACTIE achieves state-of-the-art results by a large margin.",
-        "authors": ["Ming Zhong", "Siru Ouyang", "Minhao Jiang", "Vivian Hu", "Yizhu Jiao", "Xuan Wang", "Jiawei Han"],
-        "number_of_citations": 7,
-        "datasets": ["Reaction Corpus"],
-        "domains": ["Computer Science", "Chemistry", "Natural Language Processing", "Information Extraction"],
-        "keywords": ["Chemical Reaction Extraction", "Weak Supervision", "Distant Supervision", "Pre-training"],
-        "conference": "ACL 2023",
-        "github_repo": null,
-        "url": "https://arxiv.org/pdf/2307.01448"
+    "id": "2005.14165",
+    "title": "Language Models are Few-Shot Learners",
+    "date_published": "27 May 2024",
+    "abstract": "Recent work has demonstrated substantial gains on many NLP tasks and benchmarks by pre-training on a large corpus of text followed by fine-tuning on a specific task. While typically task-agnostic in architecture, this method still requires task-specific fine-tuning datasets of thousands or tens of thousands of examples. By contrast, humans can generally perform a new language task from only a few examples or from simple instructions - something which current NLP systems still largely struggle to do. Here we show that scaling up language models greatly improves task-agnostic, few-shot performance, sometimes even reaching competitiveness with prior state-of-the-art fine-tuning approaches. Specifically, we train GPT-3, an autoregressive language model with 175 billion parameters, 10x more than any previous non-sparse language model, and test its performance in the few-shot setting. For all tasks, GPT-3 is applied without any gradient updates or fine-tuning, with tasks and few-shot demonstrations specified purely via text interaction with the model. GPT-3 achieves strong performance on many NLP datasets, including translation, question-answering, and cloze tasks, as well as several tasks that require on-the-fly reasoning or domain adaptation, such as unscrambling words, using a novel word in a sentence, or performing 3-digit arithmetic. At the same time, we also identify some datasets where GPT-3's few-shot learning still struggles, as well as some datasets where GPT-3 faces methodological issues related to training on large web corpora. Finally, we find that GPT-3 can generate samples of news articles which human evaluators have difficulty distinguishing from articles written by humans. We discuss broader societal impacts of this finding and of GPT-3 in general.",
+    "conclusion": "GPT-3 demonstrates substantial generalization improvements in a few-shot setting, outperforming smaller models. However, it reveals limitations on specific datasets and concerns about potential misuse.",
+    "authors": [
+        "Tom B. Brown", "Benjamin Mann", "Nick Ryder", "Melanie Subbiah", 
+        "Jared Kaplan", "Prafulla Dhariwal", "Arvind Neelakantan", "Pranav Shyam", 
+        "Girish Sastry", "Amanda Askell", "Sandhini Agarwal", "Ariel Herbert-Voss", 
+        "Gretchen Krueger", "Tom Henighan", "Rewon Child", "Aditya Ramesh", 
+        "Daniel M. Ziegler", "Jeffrey Wu", "Clemens Winter", "Christopher Hesse", 
+        "Mark Chen", "Eric Sigler", "Mateusz Litwin", "Scott Gray", "Benjamin Chess", 
+        "Jack Clark", "Christopher Berner", "Sam McCandlish", "Alec Radford", 
+        "Ilya Sutskever", "Dario Amodei"
+    ],
+    "number_of_citations": 36393,
+    "datasets": ["Common Crawl (filtered)", "WebText2", "Books1", "Books2", "Wikipedia"],
+    "domains": ["Natural Language Processing", "AI", "Language Modeling"],
+    "keywords": [
+        "Language Models", "Few-shot Learning", "GPT-3", 
+        "Autoregressive Language Model", "In-context Learning", "Transfer Learning"
+    ],
+    "conference": "Advances in Neural Information Processing Systems (NeurIPS) 2020",
+    "github_repo": "OpenAI's GPT-3",
+    "url": "https://arxiv.org/pdf/2005.14165",
+    "citations": []
     },
     {
-        "id": "EMNLP2023_ReactionMiner",
-        "title": "Reaction Miner: An Integrated System for Chemical Reaction Extraction from Textual Data",
-        "date_published": "December 2023",
-        "abstract": " Chemical reactions, as a core entity in the realm of chemistry, hold crucial implications in diverse areas ranging from hands-on laboratory research to advanced computational drug design. Despite a burgeoning interest in employing NLP techniques to extract these reactions, aligning this task with the real-world requirements of chemistry practitioners remains an ongoing challenge. In this paper, we present Reaction Miner, a system specifically designed to interact with raw scientific literature, delivering precise and more informative chemical reactions. Going beyond mere extraction, Reaction Miner integrates a holistic workflow: it accepts PDF files as input, bypassing the need for pre-processing and bolstering user accessibility. Subsequently, a text segmentation module ensures that the refined text encapsulates complete chemical reactions, augmenting the accuracy of extraction. Moreover, Reaction Miner broadens the scope of existing pre-defined reaction roles, including vital attributes previously neglected, thereby offering a more comprehensive depiction of chemical reactions. Evaluations conducted by chemistry domain users highlight the efficacy of each module in our system, demonstrating Reaction Miner as a powerful tool in this field.",
-        "conclusion": "In our exploration, we present REACTION MINER, an integrated system adept at extracting chemical reactions directly from raw scientific PDFs. Be- yond mere extraction, it offers enhanced accuracy by broadening the scope of reaction roles and elimi- nating prior gaps. Feedback from chemistry experts marks it as a powerful tool for the field.",
-        "authors": ["Ming Zhong", "Siru Ouyang", "Yizhu Jiao", "Priyanka Kargupta", "Leo Luo", "Yanzhen Shen", "Bobby Zhou", "Xianrui Zhong", "Xuan Liu", "Hongxiang Li", "Jinfeng Xiao", "Minhao Jiang", "Vivian Hu", "Xuan Wang", "Heng Ji", "Martin Burke", "Huimin Zhao", "Jiawei Han"],
-        "number_of_citations": 4,
-        "datasets": [],
-        "domains": ["Natural Language Processing", "Chemistry", "Information Extraction"],
-        "keywords": ["Chemical reaction extraction", "PDF processing", "text segmentation", "reaction roles"],
-        "conference": "EMNLP 2023",
-        "github_repo": "https://github.com/maszhongming/ReactionMiner",
-        "url": "https://aclanthology.org/2023.emnlp-demo.36.pdf"
+    "id": "2402.01030",
+    "title": "Executable Code Actions Elicit Better LLM Agents",
+    "date_published": "1 Feb 2024",
+    "abstract": "Large Language Model (LLM) agents, capable of performing a broad range of actions, such as invoking tools and controlling robots, show great potential in tackling real-world challenges. LLM agents are typically prompted to produce actions by generating JSON or text in a pre-defined format, which is usually limited by constrained action space (e.g., the scope of pre-defined tools) and restricted flexibility (e.g., inability to compose multiple tools). This work proposes to use executable Python code to consolidate LLM agents' actions into a unified action space (CodeAct). Integrated with a Python interpreter, CodeAct can execute code actions and dynamically revise prior actions or emit new actions upon new observations through multi-turn interactions. Our extensive analysis of 17 LLMs on APIBank and a newly curated benchmark shows that CodeAct outperforms widely used alternatives (up to 20% higher success rate). The encouraging performance of CodeAct motivates us to build an open-source LLM agent that interacts with environments by executing interpretable code and collaborates with users using natural language. To this end, we collect an instruction-tuning dataset CodeActInstruct that consists of 7k multi-turn interactions using CodeAct. We show that it can be used with existing data to improve models in agent-oriented tasks without compromising their general capability. CodeActAgent, finetuned from Llama2 and Mistral, is integrated with Python interpreter and uniquely tailored to perform sophisticated tasks (e.g., model training) using existing libraries and autonomously self-debug.",
+    "conclusion": "As part of our future work, we plan to combine large-scale generated data from our approach and existing supervised data, to further improve the performance of LLMs.",
+    "authors": ["Xingyao Wang", "Yangyi Chen", "Lifan Yuan", "Yizhe Zhang", "Yunzhu Li", "Hao Peng", "Heng Ji"],
+    "number_of_citations": 51,
+    "datasets": ["APIBank", "CodeActInstruct"],
+    "domains": ["Natural Language Processing", "Machine Learning", "Artificial Intelligence"],
+    "keywords": ["Large Language Models", "Code Generation", "Agents", "Instruction Tuning"],
+    "conference": "ICML 2024",
+    "github_repo": "https://github.com/xingyaoww/code-act",
+    "url": "https://arxiv.org/pdf/2402.01030",
+    "citations": [
+        {
+        "id": "2308.11432",
+        "title": "A Survey on Large Language Model Based Autonomous Agents",
+        "url": "https://arxiv.org/pdf/2308.11432"
+        },
+        {
+        "id": "2304.08354",
+        "title": "Tool Learning with Foundation Models",
+        "url": "https://arxiv.org/pdf/2304.08354"
+        }
+    ]
+    },
+    {
+    "id": "2308.11432",
+    "title": "A Survey on Large Language Model Based Autonomous Agents",
+    "date_published": "April 2024",
+    "abstract": "The article provides a systematic review of LLM-based autonomous agents, highlighting their construction, application, and evaluation strategies. It discusses the challenges in creating agents that mimic human decision-making and proposes a unified framework for agent design. Applications span across social science, natural science, and engineering. The article concludes with an analysis of challenges and future research directions.",
+    "conclusion": "Emphasizes the potential of LLM-based agents to achieve human-like intelligence, identifying gaps in current research and suggesting ways to integrate human-level reasoning and decision-making.",
+    "authors": [
+        "Lei Wang", "Chen Ma", "Xueyang Feng", "Zeyu Zhang", "Hao Yang", 
+        "Jingsen Zhang", "Zhi-Yuan Chen", "Jiakai Tang", "Xu Chen", 
+        "Yankai Lin", "Wayne Xin Zhao", "Zhewei Wei", "Ji-Rong Wen"
+    ],
+    "number_of_citations": 756,
+    "datasets": [],
+    "domains": ["Artificial Intelligence", "Autonomous Agents", "Machine Learning"],
+    "keywords": [
+        "Autonomous Agents", "Large Language Models", 
+        "Human-Level Intelligence", "AI Applications", "Evaluation Strategies"
+    ],
+    "conference": "Frontiers of Computer Science (Journal Article)",
+    "github_repo": null,
+    "url": "https://arxiv.org/pdf/2308.11432",
+    "citations": []
+    },
+    {
+    "id": "2304.08354",
+    "title": "Tool Learning with Foundation Models",
+    "date_published": "17 Apr 2023",
+    "abstract": "Humans possess an extraordinary ability to create and utilize tools, allowing them to overcome physical limitations and explore new frontiers. With the advent of foundation models, AI systems have the potential to be equally adept in tool use as humans. This paradigm, i.e., tool learning with foundation models, combines the strengths of specialized tools and foundation models to achieve enhanced accuracy, efficiency, and automation in problem-solving. Despite its immense potential, there is still a lack of a comprehensive understanding of key challenges, opportunities, and future endeavors in this field. To this end, we present a systematic investigation of tool learning in this paper. We first introduce the background of tool learning, including its cognitive origins, the paradigm shift of foundation models, and the complementary roles of tools and models. Then we recapitulate existing tool learning research into tool-augmented and tool-oriented learning. We formulate a general tool learning framework: starting from understanding the user instruction, models should learn to decompose a complex task into several subtasks, dynamically adjust their plan through reasoning, and effectively conquer each sub-task by selecting appropriate tools. We also discuss how to train models for improved tool-use capabilities and facilitate the generalization in tool learning. Considering the lack of a systematic tool learning evaluation in prior works, we experiment with 18 representative tools and show the potential of current foundation models in skillfully utilizing tools. Finally, we discuss several open problems that require further investigation for tool learning. In general, we hope this paper could inspire future research in integrating tools with foundation models.",
+    "conclusion": "Tool learning holds immense potential for enhancing AI capabilities in complex tasks. Key future directions include ensuring safe and trustworthy tool use, advancing tool creation and personalization, and addressing challenges in applying this framework to real-world scenarios.",
+    "authors": [
+        "Yujia Qin", "Shengding Hu", "Yankai Lin", "Weize Chen", "Ning Ding", 
+        "Others from institutions like Tsinghua University, Renmin University of China, UIUC, NYU, and others"
+    ],
+    "number_of_citations": 234,
+    "datasets": [],
+    "domains": ["Artificial Intelligence", "Machine Learning", "Tool Learning"],
+    "keywords": [
+        "Tool Learning", "Foundation Models", "AI Systems", 
+        "Problem-Solving", "User Instructions", "Generalization"
+    ],
+    "conference": "arXiv preprint",
+    "github_repo": "https://github.com/OpenBMB/BMTools",
+    "url": "https://arxiv.org/pdf/2304.08354",
+    "citations": []
+    },
+    {
+    "id": "2310.00898",
+    "title": "Enabling Language Models to Implicitly Learn Self-Improvement",
+    "date_published": "2024",
+    "abstract": "Large Language Models (LLMs) have demonstrated remarkable capabilities in open-ended text generation tasks. However, the inherent open-ended nature of these tasks implies that there is always room for improvement in the quality of model responses. To address this challenge, various approaches have been proposed to enhance the performance of LLMs. There has been a growing focus on enabling LLMs to self-improve their response quality, thereby reducing the reliance on extensive human annotation efforts for collecting diverse and high-quality training data. Recently, prompting-based methods have been widely explored among self-improvement methods owing to their effectiveness, efficiency, and convenience. However, those methods usually require explicitly and thoroughly written rubrics as inputs to LLMs. It is expensive and challenging to manually derive and provide all necessary rubrics with a real-world complex goal for improvement (e.g., being more helpful and less harmful). To this end, we propose an ImPlicit Self-ImprovemenT (PIT) framework that implicitly learns the improvement goal from human preference data. PIT only requires preference data that are used to train reward models without extra human efforts. Specifically, we reformulate the training objective of reinforcement learning from human feedback (RLHF) -- instead of maximizing response quality for a given input, we maximize the quality gap of the response conditioned on a reference response. In this way, PIT is implicitly trained with the improvement goal of better aligning with human preferences. Experiments on two real-world datasets and one synthetic dataset show that our method significantly outperforms prompting-based methods.",
+    "conclusion": "Not provided in the available information.",
+    "authors": ["Ziqi Wang", "Le Hou", "Tianjian Lu", "Yuexin Wu", "Yunxuan Li", "Hongkun Yu", "Heng Ji"],
+    "number_of_citations": 2,
+    "datasets": ["Anthropic/HH-RLHF", "OpenAI/Summary", "synthetic data"],
+    "domains": ["Natural Language Processing", "Machine Learning"],
+    "keywords": ["Large Language Models", "Reinforcement Learning", "Human Feedback", "Self-Improvement"],
+    "conference": "ICLR 2024",
+    "github_repo": null,
+    "url": "https://arxiv.org/pdf/2310.00898",
+    "citations": [
+        {
+        "id": "2203.02155",
+        "title": "Training Language Models to Follow Instructions with Human Feedback",
+        "url": "https://arxiv.org/pdf/2203.02155"
+        },
+        {
+        "id": "2112.00861",
+        "title": "A General Language Assistant as a Laboratory for Alignment",
+        "url": "https://arxiv.org/pdf/2112.00861"
+        }
+    ]
+    },
+    {
+    "id": "2203.02155",
+    "title": "Training Language Models to Follow Instructions with Human Feedback",
+    "date_published": "4 Mar 2022",
+    "abstract": "The paper introduces InstructGPT, a language model fine-tuned using reinforcement learning from human feedback (RLHF). By incorporating human preferences as a reward signal, the model aligns with user instructions better than traditional models like GPT-3. Evaluation shows that smaller InstructGPT models outperform GPT-3 in instruction-following tasks, with improvements in truthfulness and reductions in toxic outputs. Making language models bigger does not inherently make them better at following a user's intent. For example, large language models can generate outputs that are untruthful, toxic, or simply not helpful to the user. In other words, these models are not aligned with their users. In this paper, we show an avenue for aligning language models with user intent on a wide range of tasks by fine-tuning with human feedback. Starting with a set of labeler-written prompts and prompts submitted through the OpenAI API, we collect a dataset of labeler demonstrations of the desired model behavior, which we use to fine-tune GPT-3 using supervised learning. We then collect a dataset of rankings of model outputs, which we use to further fine-tune this supervised model using reinforcement learning from human feedback. We call the resulting models InstructGPT. In human evaluations on our prompt distribution, outputs from the 1.3B parameter InstructGPT model are preferred to outputs from the 175B GPT-3, despite having 100x fewer parameters. Moreover, InstructGPT models show improvements in truthfulness and reductions in toxic output generation while having minimal performance regressions on public NLP datasets. Even though InstructGPT still makes simple mistakes, our results show that fine-tuning with human feedback is a promising direction for aligning language models with human intent.",
+    "conclusion": "Fine-tuning language models with human feedback significantly improves their ability to align with user intents across diverse tasks. InstructGPT models generalize better to real-world tasks, showing promise for creating more aligned AI systems. However, challenges like bias, toxicity, and generalization to underrepresented groups remain open areas for improvement.",
+    "authors": [
+        "Long Ouyang", "Jeff Wu", "Xu Jiang", "Diogo Almeida", "Carroll L. Wainwright",
+        "Pamela Mishkin", "Chong Zhang", "Sandhini Agarwal", "Katarina Slama", 
+        "Alex Ray", "John Schulman", "Jacob Hilton", "Fraser Kelton", "Luke Miller", 
+        "Maddie Simens", "Amanda Askell", "Peter Welinder", "Paul Christiano", 
+        "Jan Leike", "Ryan Lowe"
+    ],
+    "number_of_citations": 10330,
+    "datasets": ["OpenAI API Playground prompts", "Labeler-written prompts"],
+    "domains": ["Natural Language Processing", "Machine Learning"],
+    "keywords": ["Instruction following", "human feedback", "RLHF", "InstructGPT", "alignment"],
+    "conference": "NeurIPS 2022",
+    "github_repo": "https://github.com/openai/following-instructions-human-feedback",
+    "url": "https://arxiv.org/pdf/2203.02155",
+    "citations": []
+    },
+    {
+    "id": "2112.00861",
+    "title": "A General Language Assistant as a Laboratory for Alignment",
+    "date_published": "1 Dec 2021",
+    "abstract": "This work explores training general-purpose AI systems that align with human values, emphasizing helpfulness, honesty, and harmlessness (HHH). Techniques such as prompting, imitation learning, and ranked preference modeling are evaluated. Results show that preference modeling scales better with model size and achieves improved alignment. Novel strategies like preference model pre-training (PMP) are proposed to enhance efficiency and effectiveness in fine-tuning on human preferences.",
+    "conclusion": "The study demonstrates that alignment techniques, especially preference modeling and pre-training, significantly enhance AI alignment with human values. Prompting is an effective baseline for alignment, while PMP improves sample efficiency in scenarios requiring human feedback. These methods lay groundwork for creating aligned AI systems.",
+    "authors": [
+        "Amanda Askell", "Yuntao Bai", "Anna Chen", "Dawn Drain", "Deep Ganguli", 
+        "Tom Henighan", "Andy Jones", "Nicholas Joseph", "Ben Mann", 
+        "Nova DasSarma", "Nelson Elhage", "Zac Hatfield-Dodds", "Danny Hernandez", 
+        "Jackson Kernion", "Kamal Ndousse", "Catherine Olsson", "Dario Amodei", 
+        "Tom Brown", "Jack Clark", "Sam McCandlish", "Chris Olah", "Jared Kaplan"
+    ],
+    "number_of_citations": 360,
+    "datasets": ["StackExchange", "Reddit", "Wikipedia (reverted edits)"],
+    "domains": ["AI", "Natural Language Processing", "Machine Learning"],
+    "keywords": ["AI alignment", "human preferences", "reinforcement learning", "preference modeling", "HHH alignment"],
+    "conference": "arXiv preprint",
+    "github_repo": "https://gist.github.com/jareddk/2509330f8ef3d787fc5aaac67aab5f11",
+    "url": "https://arxiv.org/pdf/2112.00861",
+    "citations": []
+    },
+    {
+    "id": "2402.13364",
+    "title": "A Simple but Effective Approach to Improve Structured Language Model Output for Information Extraction",
+    "date_published": "20 Feb 2024",
+    "abstract": "Large language models (LLMs) have demonstrated impressive abilities in generating unstructured natural language according to instructions. However, their performance can be inconsistent when tasked with producing text that adheres to specific structured formats, which is crucial in applications like named entity recognition (NER) or relation extraction (RE). To address this issue, this paper introduces an efficient method, G&O, to enhance their structured text generation capabilities. It breaks the generation into a two-step pipeline: initially, LLMs generate answers in natural language as intermediate responses. Subsequently, LLMs are asked to organize the output into the desired structure, using the intermediate responses as context. G&O effectively separates the generation of content from the structuring process, reducing the pressure of completing two orthogonal tasks simultaneously. Tested on zero-shot NER and RE, the results indicate a significant improvement in LLM performance with minimal additional efforts.",
+    "conclusion": "The G&O method effectively improves the performance of language models in generating structured outputs, demonstrating its utility for various structured text generation tasks.",
+    "authors": ["Yinghao Li", "Rampi Ramprasad", "Chao Zhang"],
+    "number_of_citations": 5,
+    "datasets": [
+        "CoNLL 2003", "NCBI Disease", "BC5CDR", "PolyIE",
+        "CoNLL 2004", "NYT", "PolyIE"
+    ],
+    "domains": ["Natural Language Processing", "Information Extraction"],
+    "keywords": [
+        "Large Language Models", "Information Extraction", 
+        "Named Entity Recognition", "Relation Extraction", "Structured Text Generation"
+    ],
+    "conference": "arXiv preprint",
+    "github_repo": "https://github.com/Yinghao-Li/GnO-IE",
+    "url": "https://arxiv.org/pdf/2402.13364",
+    "citations": [
+        {
+        "id": "2006.15509",
+        "title": "BOND: BERT-Assisted Open-Domain Named Entity Recognition with Distant Supervision",
+        "url": "https://arxiv.org/pdf/2006.15509"
+        },
+        {
+        "id": "2004.14723",
+        "title": "Named Entity Recognition without Labelled Data: A Weak Supervision Approach",
+        "url": "https://arxiv.org/pdf/2004.14723"
+        },
+        {
+        "id": "2309.05086",
+        "title": "Neural-Hidden-CRF: A Robust Weakly-Supervised Sequence Labeler",
+        "url": "https://arxiv.org/pdf/2309.05086"
+        }
+    ]
+    },
+    {
+    "id": "2006.15509",
+    "title": "BOND: BERT-Assisted Open-Domain Named Entity Recognition with Distant Supervision",
+    "date_published": "28 Jun 2020",
+    "abstract": "This paper introduces BOND, a two-stage framework for improving open-domain named entity recognition (NER) under distant supervision. It leverages pre-trained language models like BERT to enhance predictions by addressing the challenges of noisy and incomplete annotations. Experiments on five benchmark datasets demonstrate that BOND outperforms state-of-the-art distantly supervised NER methods.",
+    "conclusion": "The BOND framework significantly improves performance in open-domain NER tasks by iteratively refining noisy distant labels and leveraging self-training with pre-trained models. The results demonstrate its effectiveness across diverse datasets and scenarios.",
+    "authors": [
+        "Chen Liang", "Yue Yu", "Haoming Jiang", "Siawpeng Er", 
+        "Ruijia Wang", "Tuo Zhao", "Chao Zhang"
+    ],
+    "number_of_citations": 274,
+    "datasets": [
+        "Wikidata", "CoNLL03", "Twitter", "OntoNotes5.0", "Wikigold", "Webpage"
+    ],
+    "domains": ["Natural Language Processing", "Named Entity Recognition", "Machine Learning"],
+    "keywords": [
+        "NER", "Distant Supervision", "Pre-trained Language Models", "BERT", "Self-Training"
+    ],
+    "conference": "KDD 2020",
+    "github_repo": "https://github.com/cliang1453/BOND",
+    "url": "https://arxiv.org/pdf/2006.15509",
+    "citations": []
+    },
+    {
+    "id": "2004.14723",
+    "title": "Named Entity Recognition without Labelled Data: A Weak Supervision Approach",
+    "date_published": "30 Apr 2020",
+    "abstract": "Named Entity Recognition (NER) performance often degrades rapidly when applied to target domains that differ from the texts observed during training. When in-domain labelled data is available, transfer learning techniques can be used to adapt existing NER models to the target domain. But what should one do when there is no hand-labelled data for the target domain? This paper presents a simple but powerful approach to learn NER models in the absence of labelled data through weak supervision. The approach relies on a broad spectrum of labelling functions to automatically annotate texts from the target domain. These annotations are then merged together using a hidden Markov model which captures the varying accuracies and confusions of the labelling functions. A sequence labelling model can finally be trained on the basis of this unified annotation.",
+    "conclusion": "The proposed model improves NER performance by leveraging weak supervision and shows promise in sequence labelling tasks beyond NER.",
+    "authors": ["Pierre Lison", "Aliaksandr Hubin", "Jeremy Barnes", "Samia Touileb"],
+    "number_of_citations": 133,
+    "datasets": ["CoNLL 2003", "Reuters", "Bloomberg"],
+    "domains": ["Natural Language Processing"],
+    "keywords": [
+        "Named Entity Recognition", "Weak Supervision", 
+        "Hidden Markov Model", "Sequence Labeling", "Transfer Learning"
+    ],
+    "conference": "ACL 2020",
+    "github_repo": "https://github.com/NorskRegnesentral/weak-supervision-for-NER",
+    "url": "https://arxiv.org/pdf/2004.14723",
+    "citations": []
+    },
+    {
+    "id": "2309.05086",
+    "title": "Neural-Hidden-CRF: A Robust Weakly-Supervised Sequence Labeler",
+    "date_published": "10 Sep 2023",
+    "abstract": "We propose a neuralized undirected graphical model called Neural-Hidden-CRF to solve the weakly-supervised sequence labeling problem. Under the umbrella of probabilistic undirected graph theory, the proposed Neural-Hidden-CRF embedded with a hidden CRF layer models the variables of word sequence, latent ground truth sequence, and weak label sequence with the global perspective that undirected graphical models particularly enjoy.",
+    "conclusion": "Neural-Hidden-CRF significantly improves state-of-the-art weakly-supervised sequence labeling by combining graphical modeling with deep learning.",
+    "authors": [
+        "Zhijun Chen", "Hailong Sun", "Wanhao Zhang", 
+        "Chunyi Xu", "Qianren Mao", "Pengpeng Chen"
+    ],
+    "number_of_citations": 5,
+    "datasets": ["CoNLL-03 (MTurk)", "CoNLL-03 (WS)", "WikiGold (WS)", "MIT-Restaurant (WS)"],
+    "domains": ["Natural Language Processing", "Machine Learning"],
+    "keywords": [
+        "Weakly-Supervised Learning", "Sequence Labeling", 
+        "Conditional Random Fields", "Neural Networks"
+    ],
+    "conference": "KDD 2023",
+    "github_repo": "https://github.com/junchenzhi/Neural-Hidden-CRF",
+    "url": "https://arxiv.org/pdf/2309.05086",
+    "citations": []
+    },
+    {
+    "id": "2307.01448",
+    "title": "ReactIE: Enhancing Chemical Reaction Extraction with Weak Supervision",
+    "date_published": "4 Jul 2023",
+    "abstract": "Structured chemical reaction information plays a vital role for chemists engaged in laboratory work and advanced endeavors such as computer-aided drug design. Despite the importance of extracting structured reactions from scientific literature, data annotation for this purpose is cost-prohibitive due to the significant labor required from domain experts. Consequently, the scarcity of sufficient training data poses an obstacle to the progress of related models in this domain. In this paper, we propose ReactIE, which combines two weakly supervised approaches for pre-training. Our method utilizes frequent patterns within the text as linguistic cues to identify specific characteristics of chemical reactions. Additionally, we adopt synthetic data from patent records as distant supervision to incorporate domain knowledge into the model. Experiments demonstrate that ReactIE achieves substantial improvements and outperforms all existing baselines.",
+    "conclusion": "In this paper, we present REACTIE, an automatic framework for extracting chemical reactions from the scientific literature. Our approach incorporates linguistic and chemical knowledge into the pre-training. Experiments show that REACTIE achieves state-of-the-art results by a large margin.",
+    "authors": ["Ming Zhong", "Siru Ouyang", "Minhao Jiang", "Vivian Hu", "Yizhu Jiao", "Xuan Wang", "Jiawei Han"],
+    "number_of_citations": 7,
+    "datasets": ["Reaction Corpus (Guo et al., 2022)"],
+    "domains": ["Natural Language Processing", "Information Extraction", "Chemistry"],
+    "keywords": ["Chemical Reaction Extraction", "Weak Supervision", "Distant Supervision", "Pre-training"],
+    "conference": "Findings of the Association for Computational Linguistics: ACL 2023",
+    "github_repo": null,
+    "url": "https://arxiv.org/pdf/2307.01448",
+    "citations": [
+        {
+        "id": "2202.04824",
+        "title": "AdaPrompt: Adaptive Model Training for Prompt-based NLP",
+        "url": "https://arxiv.org/abs/2202.04824"
+        },
+        {
+        "id": "2010.09885",
+        "title": "ChemBERTa: Large-Scale Self-Supervised Pretraining for Molecular Property Prediction",
+        "url": "https://arxiv.org/pdf/2010.09885"
+        }
+    ]
+    },
+    {
+    "id": "2202.04824",
+    "title": "AdaPrompt: Adaptive Model Training for Prompt-based NLP",
+    "date_published": "10 Feb 2022",
+    "abstract": "Prompt-based learning, with its capability to tackle zero-shot and few-shot NLP tasks, has gained much attention in the community. The main idea is to bridge the gap between NLP downstream tasks and language modeling (LM), by mapping these tasks into natural language prompts, which are then filled by pre-trained language models (PLMs). However, for prompt learning, there are still two salient gaps between NLP tasks and pretraining. First, prompt information is not necessarily sufficiently present during LM pre-training. Second, task-specific data are not necessarily well represented during pre-training. We address these two issues by proposing AdaPrompt, adaptively retrieving external data for continual pretraining of PLMs by making use of both task and prompt characteristics. In addition, we make use of knowledge in Natural Language Inference models for deriving adaptive verbalizers. Experimental results on five NLP benchmarks show that AdaPrompt can improve over standard PLMs in few-shot settings. In addition, in zero-shot settings, our method outperforms standard prompt-based methods by up to 26.35% relative error reduction.",
+    "conclusion": "AdaPrompt improves few-shot and zero-shot NLP performance through adaptive pretraining and verbalizer selection, outperforming standard prompt methods.",
+    "authors": ["Yulong Chen", "Yang Liu", "Li Dong", "Shuohang Wang", "Chenguang Zhu", "Michael Zeng", "Yue Zhang"],
+    "number_of_citations": 49,
+    "datasets": ["SST-2", "Yelp", "AGNews", "TREC", "DBPedia"],
+    "domains": ["Natural Language Processing", "Machine Learning"],
+    "keywords": [
+        "Prompt-based learning", "Zero-shot learning", 
+        "Few-shot learning", "Pre-trained language models", "Adaptive training"
+    ],
+    "conference": "EMNLP 2022",
+    "github_repo": "https://github.com/cylnlp/AdaPrompt",
+    "url": "https://arxiv.org/abs/2202.04824",
+    "citations": []
+    },
+    {
+    "id": "2010.09885",
+    "title": "ChemBERTa: Large-Scale Self-Supervised Pretraining for Molecular Property Prediction",
+    "date_published": "19 Oct 2020",
+    "abstract": "GNNs and chemical fingerprints are the predominant approaches to representing molecules for property prediction. However, in NLP, transformers have become the de-facto standard for representation learning thanks to their strong downstream task transfer. In parallel, the software ecosystem around transformers is maturing rapidly, with libraries like HuggingFace and BertViz enabling streamlined training and introspection. In this work, we make one of the first attempts to systematically evaluate transformers on molecular property prediction tasks via our ChemBERTa model. ChemBERTa scales well with pretraining dataset size, offering competitive downstream performance on MoleculeNet and useful attention-based visualization modalities. Our results suggest that transformers offer a promising avenue of future work for molecular representation learning and property prediction. To facilitate these efforts, we release a curated dataset of 77M SMILES from PubChem suitable for large-scale self-supervised pretraining.",
+    "conclusion": "ChemBERTa demonstrates the potential of transformers in molecular property prediction and highlights areas for further research in pretraining scalability and hybrid models.",
+    "authors": ["Seyone Chithrananda", "Gabriel Grand", "Bharath Ramsundar"],
+    "number_of_citations": 477,
+    "datasets": ["77M SMILES from PubChem"],
+    "domains": ["Machine Learning", "Computational Chemistry"],
+    "keywords": [
+        "Transformers", "Molecular property prediction", 
+        "Self-supervised pretraining"
+    ],
+    "conference": "arXiv preprint",
+    "github_repo": null,
+    "url": "https://arxiv.org/pdf/2010.09885",
+    "citations": []
+    },
+    {
+    "id": "2023.emnlp-demo.36",
+    "title": "Reaction Miner: An Integrated System for Chemical Reaction Extraction from Textual Data",
+    "date_published": "December 2023",
+    "abstract": "Chemical reactions, as a core entity in the realm of chemistry, hold crucial implications in diverse areas ranging from hands-on laboratory research to advanced computational drug design. Despite a burgeoning interest in employing NLP techniques to extract these reactions, aligning this task with the real-world requirements of chemistry practitioners remains an ongoing challenge. In this paper, we present Reaction Miner, a system specifically designed to interact with raw scientific literature, delivering precise and more informative chemical reactions. Going beyond mere extraction, Reaction Miner integrates a holistic workflow: it accepts PDF files as input, bypassing the need for pre-processing and bolstering user accessibility. Subsequently, a text segmentation module ensures that the refined text encapsulates complete chemical reactions, augmenting the accuracy of extraction. Moreover, Reaction Miner broadens the scope of existing pre-defined reaction roles, including vital attributes previously neglected, thereby offering a more comprehensive depiction of chemical reactions. Evaluations conducted by chemistry domain users highlight the efficacy of each module in our system, demonstrating Reaction Miner as a powerful tool in this field.",
+    "conclusion": "In our exploration, we present REACTION MINER, an integrated system adept at extracting chemical reactions directly from raw scientific PDFs. Beyond mere extraction, it offers enhanced accuracy by broadening the scope of reaction roles and eliminating prior gaps. Feedback from chemistry experts marks it as a powerful tool for the field.",
+    "authors": [
+        "Ming Zhong", "Siru Ouyang", "Yizhu Jiao", "Priyanka Kargupta",
+        "Leo Luo", "Yanzhen Shen", "Bobby Zhou", "Xianrui Zhong",
+        "Xuan Liu", "Hongxiang Li", "Jinfeng Xiao", "Minhao Jiang",
+        "Vivian Hu", "Xuan Wang", "Heng Ji", "Martin Burke",
+        "Huimin Zhao", "Jiawei Han"
+    ],
+    "number_of_citations": 4,
+    "datasets": [],
+    "domains": ["Natural Language Processing", "Chemistry", "Information Extraction"],
+    "keywords": [
+        "Chemical reaction extraction", "PDF processing", "text segmentation", "reaction roles"
+    ],
+    "conference": "EMNLP 2023",
+    "github_repo": "https://github.com/maszhongming/ReactionMiner",
+    "url": "https://aclanthology.org/2023.emnlp-demo.36.pdf",
+    "citations": [
+        {
+        "id": "2106.09685",
+        "title": "LoRA: Low-Rank Adaptation of Large Language Models",
+        "url": "https://arxiv.org/pdf/2106.09685"
+        },
+        {
+        "id": "2211.01577",
+        "title": "Open-Vocabulary Argument Role Prediction for Event Extraction",
+        "url": "https://arxiv.org/pdf/2211.01577"
+        }
+    ]
+    },
+    {
+    "id": "2106.09685",
+    "title": "LoRA: Low-Rank Adaptation of Large Language Models",
+    "date_published": "17 Jun 2021",
+    "abstract": "An important paradigm of natural language processing consists of large-scale pre-training on general domain data and adaptation to particular tasks or domains. As we pre-train larger models, full fine-tuning, which retrains all model parameters, becomes less feasible. Using GPT-3 175B as an example -- deploying independent instances of fine-tuned models, each with 175B parameters, is prohibitively expensive. We propose Low-Rank Adaptation, or LoRA, which freezes the pre-trained model weights and injects trainable rank decomposition matrices into each layer of the Transformer architecture, greatly reducing the number of trainable parameters for downstream tasks. Compared to GPT-3 175B fine-tuned with Adam, LoRA can reduce the number of trainable parameters by 10,000 times and the GPU memory requirement by 3 times. LoRA performs on-par or better than fine-tuning in model quality on RoBERTa, DeBERTa, GPT-2, and GPT-3, despite having fewer trainable parameters, a higher training throughput, and, unlike adapters, no additional inference latency.",
+    "conclusion": "LoRA offers an efficient adaptation strategy for large language models, significantly reducing parameter tuning and memory costs while maintaining or improving task performance.",
+    "authors": [
+        "Edward J. Hu", "Yelong Shen", "Phillip Wallis", "Zeyuan Allen-Zhu",
+        "Yuanzhi Li", "Shean Wang", "Lu Wang", "Weizhu Chen"
+    ],
+    "number_of_citations": 8792,
+    "datasets": [
+        "GLUE Benchmark", "WikiSQL", "SAMSum", "E2E NLG Challenge", "DART", "WebNLG"
+    ],
+    "domains": ["Natural Language Processing", "Machine Learning"],
+    "keywords": [
+        "Low-Rank Adaptation", "Large Language Models", 
+        "Fine-tuning", "Parameter-efficient training", "Transformer architecture"
+    ],
+    "conference": "ICLR 2022",
+    "github_repo": "https://github.com/microsoft/LoRA",
+    "url": "https://arxiv.org/pdf/2106.09685",
+    "citations": []
+    },
+    {
+    "id": "2211.01577",
+    "title": "Open-Vocabulary Argument Role Prediction for Event Extraction",
+    "date_published": "3 Nov 2022",
+    "abstract": "The argument role in event extraction refers to the relation between an event and an argument participating in it. Despite the great progress in event extraction, existing studies still depend on roles pre-defined by domain experts. These studies expose obvious weakness when extending to emerging event types or new domains without available roles. Therefore, more attention and effort needs to be devoted to automatically customizing argument roles. In this paper, we define this essential but under-explored task: open-vocabulary argument role prediction. The goal of this task is to infer a set of argument roles for a given event type. We propose a novel unsupervised framework, RolePred for this task. Specifically, we formulate the role prediction problem as an in-filling task and construct prompts for a pre-trained language model to generate candidate roles. By extracting and analyzing the candidate arguments, the event-specific roles are further merged and selected. To standardize the research of this task, we collect a new event extraction dataset from Wikipedia including 142 customized argument roles with rich semantics. On this dataset, RolePred outperforms the existing methods by a large margin.",
+    "conclusion": "RolePred establishes a robust baseline for open-vocabulary argument role prediction with strong performance on a new event extraction dataset.",
+    "authors": ["Yizhu Jiao", "Sha Li", "Yiqing Xie", "Ming Zhong", "Heng Ji", "Jiawei Han"],
+    "number_of_citations": 17,
+    "datasets": ["RoleEE (collected from Wikipedia)"],
+    "domains": ["Natural Language Processing", "Event Extraction"],
+    "keywords": [
+        "Open-vocabulary", "argument role prediction", 
+        "event extraction", "unsupervised learning"
+    ],
+    "conference": "EMNLP 2022",
+    "github_repo": "https://github.com/yzjiao/RolePred",
+    "url": "https://arxiv.org/pdf/2211.01577",
+    "citations": []
     }
 ]
