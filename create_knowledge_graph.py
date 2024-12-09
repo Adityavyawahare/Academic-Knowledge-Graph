@@ -1,12 +1,14 @@
 from neo4j import GraphDatabase
 import json
+from dotenv import load_dotenv
+import os
 from create_paper_node import create_paper
+
 # Neo4j connection details
-credentials = open('credentials.json',)
-creds = json.load(credentials)
-URI = creds["NEO4J_URI"]
-USERNAME = creds["NEO4J_USERNAME"]
-PASSWORD = creds["NEO4J_PASSWORD"]
+load_dotenv()
+URI = os.getenv("NEO4J_URI")
+USERNAME = os.getenv("NEO4J_USER")
+PASSWORD = os.getenv("NEO4J_PASSWORD")
 
 # Connect to Neo4j
 driver = GraphDatabase.driver(URI, auth=(USERNAME, PASSWORD))

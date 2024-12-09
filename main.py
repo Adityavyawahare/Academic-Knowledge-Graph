@@ -12,6 +12,7 @@ from openai_connection import initialize_openai
 from dataset_recommendation import get_dataset_recommendations
 from theme_specific_search import generate_theme_recommendations
 from author_collaboration import get_author_collaboration
+from summarize_papers import summarize_papers
 from dotenv import load_dotenv
 
 load_dotenv(override=True)
@@ -56,27 +57,33 @@ def setup_tools(neo4j_conn, openai_client):
         func=lambda query: get_author_collaboration(neo4j_conn, openai_client, query),
         description="Find potential authors for collaboration"
     )
+    summarization_tool = StructuredTool.from_function(
+        name="summarize_papers",
+        func=lambda query: summarize_papers(neo4j_conn, openai_client, query),
+        description="Fetch summaries of mentioned papers"
+    )
     web_search_tool = StructuredTool.from_function(
         name="web_search",
         func=search.run,
         description="Search the web for current information. Use this as a last resort."
     )
 
-    return [dataset_tool, theme_tool, author_tool, web_search_tool]
+    return [dataset_tool, theme_tool, author_tool, summarization_tool, web_search_tool]
 
 
 def setup_agent(tools):
     llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
     main_prompt = ChatPromptTemplate.from_messages([
         ("system", "You are a helpful assistant for researchers in the field of Natural Language Processing and Information Extraction. "
-                   "You can provide dataset recommendations, suggest influential papers, and help find potential collaborators. "
+                   "You can provide dataset recommendations, suggest influential papers, help find potential collaborators and summarize research papers."
                    "When answering queries or completing tasks:\n"
                    "1. Use the appropriate tool based on the user's request.\n"
                    "2. For dataset recommendations, use the get_dataset_recommendations tool.\n"
                    "3. For finding influential papers in a domain, use the generate_theme_recommendations tool.\n"
                    "4. To find potential collaborators, use the get_author_collaboration tool.\n"
-                   "5. Use web search as a last resort to fill any remaining gaps in information.\n"
-                   "6. Clearly indicate which sources you've used in your response.\n"
+                   "5. For research paper summarization requests, use the summarize_papers tool"
+                   "6. Use web search as a last resort to fill any remaining gaps in information.\n"
+                   "7. Clearly indicate which sources you've used in your response.\n"
                    "Remember to provide comprehensive and accurate responses by combining information when necessary."),
         ("user", "{input}"),
         MessagesPlaceholder(variable_name="agent_scratchpad"),

@@ -1,0 +1,6 @@
+python-dotenv
+openai
+neo4j
+langchain
+langchain_community
+psycopg2
