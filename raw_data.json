@@ -419,7 +419,7 @@
         {
         "id": "2202.04824",
         "title": "AdaPrompt: Adaptive Model Training for Prompt-based NLP",
-        "url": "https://arxiv.org/abs/2202.04824"
+        "url": "https://arxiv.org/pdf/2202.04824"
         },
         {
         "id": "2010.09885",
@@ -444,7 +444,7 @@
     ],
     "conference": "EMNLP 2022",
     "github_repo": "https://github.com/cylnlp/AdaPrompt",
-    "url": "https://arxiv.org/abs/2202.04824",
+    "url": "https://arxiv.org/pdf/2202.04824",
     "citations": []
     },
     {

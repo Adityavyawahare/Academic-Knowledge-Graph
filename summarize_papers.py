@@ -2,17 +2,51 @@ import json
 from pdfTojson import extract_paper_content_from_url
 
 def summarize_papers(conn, openai, query):
-    # main function
     query_content = extract_paper_info(conn, openai, query)
     paper_nodes = get_paper_info(conn, openai, query_content)
     summaries = '''Here is the requested summary:'''
     for p in paper_nodes:
         paper_data = p.data()
-        json_doc = extract_paper_content_from_url(paper_data['p']['url'], paper_data['p']['title'])
+        doc = extract_paper_content_from_url(paper_data['p']['url'], paper_data['p']['title'])
+        json_doc= json.dumps(doc, indent=4)
         summary = generate_summary(query_content, openai, json_doc, paper_data['p']['title'])
         summaries += f"\nPaper: {paper_data['p']['title']}\n{summary}\n"
 
     return summaries
+
+def get_citation_reasoning(conn, openai, query):
+    query_content = extract_paper_info(conn, openai, query)
+    no_of_titles_extracted = len(query_content['paper_titles'].split(","))
+    paper_nodes = get_paper_info(conn, openai, query_content)
+
+    if len(paper_nodes) != no_of_titles_extracted:
+        print("Insufficient information on given papers")
+        return
+    
+    context = '''Here is the information about the papers:'''
+    for p in paper_nodes:
+        paper_data = p.data()
+        doc = extract_paper_content_from_url(paper_data['p']['url'], paper_data['p']['title'])
+        json_doc = json.dumps(doc, indent=4)
+        context += f"\n{json_doc}\n"
+    
+    prompt = f"""
+    Given structured data containing information of the research papers.
+    Answer this query: {query}
+    Data:
+    {context}
+
+    Important guidelines:
+    1. If no reason is found for citation then please specify no reason found.
+    2. Give separate reasoning for each pair of citing and cited paper.
+    """
+
+    response = openai.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[{"role": "user", "content": prompt}]
+    )
+    return response.choices[0].message.content
+
 
 def extract_paper_info(conn, openai, query):
     prompt = f"""

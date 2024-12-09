@@ -12,7 +12,7 @@ from openai_connection import initialize_openai
 from dataset_recommendation import get_dataset_recommendations
 from theme_specific_search import generate_theme_recommendations
 from author_collaboration import get_author_collaboration
-from summarize_papers import summarize_papers
+from summarize_papers import summarize_papers, get_citation_reasoning
 from dotenv import load_dotenv
 
 load_dotenv(override=True)
@@ -62,13 +62,18 @@ def setup_tools(neo4j_conn, openai_client):
         func=lambda query: summarize_papers(neo4j_conn, openai_client, query),
         description="Fetch summaries of mentioned papers"
     )
+    citation_reasoning_tool = StructuredTool.from_function(
+        name="citation_reasoning",
+        func=lambda query: get_citation_reasoning(neo4j_conn, openai_client, query),
+        description="Give reasoning for citation between given papers."
+    )
     web_search_tool = StructuredTool.from_function(
         name="web_search",
         func=search.run,
         description="Search the web for current information. Use this as a last resort."
     )
 
-    return [dataset_tool, theme_tool, author_tool, summarization_tool, web_search_tool]
+    return [dataset_tool, theme_tool, author_tool, summarization_tool, citation_reasoning_tool, web_search_tool]
 
 
 def setup_agent(tools):
@@ -81,9 +86,10 @@ def setup_agent(tools):
                    "2. For dataset recommendations, use the get_dataset_recommendations tool.\n"
                    "3. For finding influential papers in a domain, use the generate_theme_recommendations tool.\n"
                    "4. To find potential collaborators, use the get_author_collaboration tool.\n"
-                   "5. For research paper summarization requests, use the summarize_papers tool"
-                   "6. Use web search as a last resort to fill any remaining gaps in information.\n"
-                   "7. Clearly indicate which sources you've used in your response.\n"
+                   "5. For research paper summarization requests, use the summarize_papers tool\n"
+                   "6. For citation reasoning, use the citation_reasoning tool\n"
+                   "7. Use web search as a last resort to fill any remaining gaps in information.\n"
+                   "8. Clearly indicate which sources you've used in your response.\n"
                    "Remember to provide comprehensive and accurate responses by combining information when necessary."),
         ("user", "{input}"),
         MessagesPlaceholder(variable_name="agent_scratchpad"),

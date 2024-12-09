@@ -67,8 +67,7 @@ def extract_paper_content_from_url(pdf_url, paper_title):
             "content": formatted_content,
             "sections": section_headings
         }
-        json_output = json.dumps(structured_content, indent=4)
-        return json_output
+        return structured_content
     except Exception as e:
         print(f"Error extracting content from URL {pdf_url}: {e}")
         return None
