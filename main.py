@@ -10,7 +10,7 @@ import json
 from neo4j_connection import Neo4jConnection
 from openai_connection import initialize_openai
 from dataset_recommendation import get_dataset_recommendations
-from theme_specific_search import generate_theme_recommendations
+from theme_specific_search import theme_search
 from author_collaboration import get_author_collaboration
 from summarize_papers import summarize_papers, get_citation_reasoning
 from dotenv import load_dotenv
@@ -49,7 +49,7 @@ def setup_tools(neo4j_conn, openai_client):
     )
     theme_tool = StructuredTool.from_function(
         name="generate_theme_recommendations",
-        func=lambda query: generate_theme_recommendations(query, openai_client, neo4j_conn),
+        func=lambda query: theme_search(neo4j_conn, openai_client, query),
         description="Get influential papers for a specific domain"
     )
     author_tool = StructuredTool.from_function(

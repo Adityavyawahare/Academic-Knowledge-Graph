@@ -160,7 +160,7 @@ def dynamic_cypher_query_domain_specific(query_info, openai, schema):
 
 def get_datasets_and_papers(conn, openai, query_info):
     schema = get_database_structure(conn)
-    query = dynamic_cypher_query_domain_specific(query_info, schema)
+    query = dynamic_cypher_query_domain_specific(query_info,openai,schema)
     print(f"Generated Cypher query:\n{query}")
 
     # Prepare parameters with default values
@@ -214,7 +214,6 @@ def generate_theme_recommendations(user_query, openai, results):
     1. A list of research papers relevant to the given topic
     2. Brief descriptions of what the paper is about
     3. Recommendations for potential research directions using these papers.
-    4. Any additional research papers that might be relevant to the topic but weren't found in our database.
 
     Respond in a concise, well-structured format.
     """
