@@ -108,7 +108,7 @@ def expand_query_information(extracted_info, openai_client):
     try:
         # Call OpenAI API for expansion
         response = openai_client.chat.completions.create(
-            model="gpt-4",
+            model="gpt-4o-mini",
             messages=[{"role": "user", "content": expansion_prompt}]
         )
         
