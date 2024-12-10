@@ -10,7 +10,7 @@ def theme_search(conn,openai,user_query):
         print(f"\nExtracted query information: {json.dumps(query_info, indent=2)}")
 
 
-        extracted_info=expand_query_information(query_info)
+        extracted_info=expand_query_information(query_info, openai)
         print(f"\nExpanded query information: {json.dumps(extracted_info, indent=2)}")
 
         results = get_datasets_and_papers(conn, openai,extracted_info)
@@ -24,7 +24,37 @@ def theme_search(conn,openai,user_query):
     except Exception as e:
         print(f"An error occurred: {e}")
 
+def get_datasets_and_papers(conn, openai, query_info):
+    schema = get_database_structure(conn)
+    query = dynamic_cypher_query(query_info,openai,schema)
+    print(f"Generated Cypher query:\n{query}")
 
+    # Prepare parameters with default values
+    parameters = {
+        "papers": query_info.get("papers", []),
+        "keywords": query_info.get("keywords", []),
+        "authors": query_info.get("authors", []),
+        "conferences": query_info.get("conferences", []),
+        "domains": query_info.get("domains", []),
+        "date_range_start": None,
+        "date_range_end": None,
+        "min_citations": query_info.get("min_citations")
+    }
+
+    # Safely get date range values
+    date_range = query_info.get("date_range", {})
+    if isinstance(date_range, dict):
+        parameters["date_range_start"] = date_range.get("start")
+        parameters["date_range_end"] = date_range.get("end")
+
+    # Convert None to empty lists for list parameters
+    for key in ["keywords", "authors", "conferences", "domains"]:
+        if parameters[key] is None:
+            parameters[key] = []
+
+    results = conn.query(query, parameters=parameters)
+    print(f"Retrieved {len(results)} results")
+    return results
     
 def dynamic_cypher_query(query_info, openai, schema):
     if not schema:
