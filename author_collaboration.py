@@ -1,14 +1,16 @@
 import json 
-from theme_specific_search import extract_query_information, get_database_structure
+from utility import *
 
 def get_author_collaboration(conn, openai,user_query):
     try:
-        # user_query = input("Enter your query for dataset recommendations: ")
 
         query_info = extract_query_information(user_query, openai)
         print(f"\nExtracted query information: {json.dumps(query_info, indent=2)}")
 
-        results = get_datasets_and_papers(conn, openai, query_info)
+        extracted_info=expand_query_information(query_info)
+        print(f"\nExpanded query information: {json.dumps(extracted_info, indent=2)}")
+
+        results = get_datasets_and_papers(conn, openai,extracted_info)
         print(f"\nRetrieved results:", results)
 
         recommendations = generate_author_recommendations(user_query, openai, results)
@@ -20,7 +22,7 @@ def get_author_collaboration(conn, openai,user_query):
         print(f"An error occurred: {e}")
 
 
-def dynamic_cypher_query_author_colab(query_info, openai, schema):
+def dynamic_cypher_query(query_info, openai, schema):
     if not schema:
         schema_str = "Schema information not available."
     else:
@@ -66,12 +68,11 @@ def dynamic_cypher_query_author_colab(query_info, openai, schema):
     OPTIONAL MATCH (p)-[:HAS_KEYWORD]->(k:Keyword)
 
     WHERE
-    ($domains IS NULL OR $domains = [] OR ANY(domain IN $domains WHERE dm.name CONTAINS domain))
+    ($domains IS NULL OR $domains = [] OR ANY(domain IN $domains WHERE toLower(dm.name) CONTAINS domain))
     AND ($conferences IS NULL OR $conferences = [] OR ANY(conference IN $conferences WHERE c.name CONTAINS conference))
 
     RETURN a.name AS Author, p.title AS PaperTitle, p.abstract AS Abstract, collect(DISTINCT c.name) AS Conferences
     LIMIT 100
-
 
     Modify and expand this template based on the available information in json_dict.
     Do not include any explanations or additional context in the query.
@@ -84,38 +85,6 @@ def dynamic_cypher_query_author_colab(query_info, openai, schema):
     )
 
     return response.choices[0].message.content.strip()
-
-def get_datasets_and_papers(conn, openai, query_info):
-    schema = get_database_structure(conn)
-    query = dynamic_cypher_query_author_colab(query_info, openai, schema)
-    print(f"Generated Cypher query:\n{query}")
-
-    # Prepare parameters with default values
-    parameters = {
-        "papers": query_info.get("papers", []),
-        "keywords": query_info.get("keywords", []),
-        "authors": query_info.get("authors", []),
-        "conferences": query_info.get("conferences", []),
-        "domains": query_info.get("domains", []),
-        "date_range_start": None,
-        "date_range_end": None,
-        "min_citations": query_info.get("min_citations")
-    }
-
-    # Safely get date range values
-    date_range = query_info.get("date_range", {})
-    if isinstance(date_range, dict):
-        parameters["date_range_start"] = date_range.get("start")
-        parameters["date_range_end"] = date_range.get("end")
-
-    # Convert None to empty lists for list parameters
-    for key in ["keywords", "authors", "conferences", "domains"]:
-        if parameters[key] is None:
-            parameters[key] = []
-
-    results = conn.query(query, parameters=parameters)
-    print(f"Retrieved {len(results)} results")
-    return results
 
 
 def generate_author_recommendations(user_query, openai, results):
