@@ -123,3 +123,36 @@ def generate_recommendations(user_query, openai, query_info, results):
     )
 
     return response.choices[0].message.content
+
+
+def get_datasets_and_papers(conn, openai, query_info):
+    schema = get_database_structure(conn)
+    query = dynamic_cypher_query(query_info,openai,schema)
+    print(f"Generated Cypher query:\n{query}")
+
+    # Prepare parameters with default values
+    parameters = {
+        "papers": query_info.get("papers", []),
+        "keywords": query_info.get("keywords", []),
+        "authors": query_info.get("authors", []),
+        "conferences": query_info.get("conferences", []),
+        "domains": query_info.get("domains", []),
+        "date_range_start": None,
+        "date_range_end": None,
+        "min_citations": query_info.get("min_citations")
+    }
+
+    # Safely get date range values
+    date_range = query_info.get("date_range", {})
+    if isinstance(date_range, dict):
+        parameters["date_range_start"] = date_range.get("start")
+        parameters["date_range_end"] = date_range.get("end")
+
+    # Convert None to empty lists for list parameters
+    for key in ["keywords", "authors", "conferences", "domains"]:
+        if parameters[key] is None:
+            parameters[key] = []
+
+    results = conn.query(query, parameters=parameters)
+    print(f"Retrieved {len(results)} results")
+    return results
